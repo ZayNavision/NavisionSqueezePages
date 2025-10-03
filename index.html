@@ -44,8 +44,8 @@
             min-height: calc(100vh - 80px); /* Adjust for header height */
             display: flex;
             align-items: center;
-            padding-top: 2rem;
-            padding-bottom: 2rem;
+            padding-top: 1.5rem; /* Reduced top padding for narrow viewports */
+            padding-bottom: 1.5rem; /* Reduced bottom padding for narrow viewports */
         }
         /* Custom spinner animation utility class */
         @keyframes spin {
@@ -66,10 +66,10 @@
 
     <!-- Header / Minimal Navigation Bar for Squeeze Page Focus -->
     <header class="sticky top-0 z-50 bg-white shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8"> <!-- Reduced px-4 to px-2 -->
             <div class="flex justify-start items-center py-4">
                 <!-- Logo Image Replacement -->
-                <div class="h-8">
+                <div class="h-7 sm:h-8"> <!-- Slightly smaller logo on narrow screens -->
                     <img src="https://www.navisiontech.com/wp-content/uploads/2019/02/Logo_Transparent.png" 
                          alt="NavisionTech Logo" 
                          class="h-full w-auto">
@@ -79,24 +79,24 @@
     </header>
 
     <main id="squeeze-container">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 w-full"> <!-- Reduced px-4 to px-2 -->
             <!-- Hero and Conversion Block (Combined) -->
-            <div class="grid lg:grid-cols-2 gap-12 items-start bg-light-contrast rounded-3xl shadow-2xl p-6 md:p-12 border border-brand-primary/30">
+            <div class="grid lg:grid-cols-2 gap-8 sm:gap-12 items-start bg-light-contrast rounded-3xl shadow-2xl p-4 sm:p-6 md:p-12 border border-brand-primary/30"> <!-- Reduced padding on smallest screens -->
                 
                 <!-- Left Column: High-Value Proposition & Trust -->
                 <!-- UPDATED: order-2 on mobile, order-1 on large screens -->
                 <div class="order-2 lg:order-1">
                     
-                    <span class="inline-block px-3 py-1 text-sm font-semibold text-brand-primary bg-brand-soft rounded-full mb-3">
+                    <span class="inline-block px-2 py-0.5 text-xs sm:text-sm font-semibold text-brand-primary bg-brand-soft rounded-full mb-3"> <!-- Smaller text and padding for chip -->
                         LS Retail Platinum Partner | Microsoft Gold Certified
                     </span>
 
-                    <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 leading-tight mb-6">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 leading-tight mb-6"> <!-- Adjusted headline size for narrow views -->
                         Boost Productivity, Improve Financial <span class="text-brand-primary">Visibility.</span>
                     </h1>
 
                     <!-- VIDEO EMBED -->
-                    <div class="relative w-full aspect-video rounded-xl shadow-2xl overflow-hidden mb-8">
+                    <div class="relative w-full aspect-video rounded-xl shadow-2xl overflow-hidden mb-6 sm:mb-8"> <!-- Reduced bottom margin -->
                         <!-- Embedded YouTube Iframe (Responsive) -->
                         <iframe 
                             class="absolute top-0 left-0 w-full h-full"
@@ -109,54 +109,54 @@
                         </iframe>
                     </div>
 
-                    <p class="text-xl text-light-subtle mb-8">
+                    <p class="text-lg sm:text-xl text-light-subtle mb-6 sm:mb-8"> <!-- Slightly smaller body text for narrow views -->
                         Get a **FREE Consultation** with a Business Central expert today. We are the trusted implementation partner for small to mid-sized businesses ready to transform operations.
                     </p>
 
                     <!-- Key Trust/Partner Points -->
-                    <ul class="space-y-4 text-lg text-gray-700">
+                    <ul class="space-y-3 sm:space-y-4 text-base sm:text-lg text-gray-700"> <!-- Smaller list text and spacing -->
                         <li class="flex items-start">
-                            <i data-lucide="award" class="w-6 h-6 mr-3 mt-1 text-yellow-500 shrink-0"></i>
+                            <i data-lucide="award" class="w-5 h-5 sm:w-6 sm:h-6 mr-3 mt-1 text-yellow-500 shrink-0"></i>
                             <strong class="text-gray-900">LS Retail Platinum Partner:</strong> Unmatched expertise for Retail and Hospitality businesses.
                         </li>
                         <li class="flex items-start">
-                            <i data-lucide="globe" class="w-6 h-6 mr-3 mt-1 text-brand-primary shrink-0"></i>
+                            <i data-lucide="globe" class="w-5 h-5 sm:w-6 sm:h-6 mr-3 mt-1 text-brand-primary shrink-0"></i>
                             <strong class="text-gray-900">100% US-Based Support:</strong> Real experts, no outsourcing, no bots. Get help when you need it.
                         </li>
                         <li class="flex items-start">
-                            <i data-lucide="check-circle" class="w-6 h-6 mr-3 mt-1 text-green-600 shrink-0"></i>
+                            <i data-lucide="check-circle" class="w-5 h-5 sm:w-6 sm:h-6 mr-3 mt-1 text-green-600 shrink-0"></i>
                             <strong class="text-gray-900">Proven Results:</strong> 20+ Years of ERP experience and a **95% Client Retention Rate**.
                         </li>
                     </ul>
 
                     <!-- Testimonial (Styling adjusted for new position) -->
-                    <p class="text-base italic text-gray-600 mt-8 pt-6 border-t border-gray-200">
+                    <p class="text-sm sm:text-base italic text-gray-600 mt-6 pt-4 border-t border-gray-200"> <!-- Reduced padding/margin for narrow screens -->
                         "Navisiontech helped us move from legacy systems to Business Central without disruption. We saw ROI within 6 months!"
-                        <span class="text-sm font-semibold text-brand-primary block mt-1">— Wholesale Distribution CFO, NC</span>
+                        <span class="text-xs font-semibold text-brand-primary block mt-1">— Wholesale Distribution CFO, NC</span>
                     </p>
 
                 </div>
 
                 <!-- Right Column: Conversion Form (The Squeeze) -->
                 <!-- UPDATED: order-1 on mobile, order-2 on large screens -->
-                <div class="p-6 md:p-8 bg-gray-50 rounded-2xl shadow-inner order-1 lg:order-2 border border-gray-200">
-                    <h3 class="text-2xl font-bold mb-2 text-gray-900 text-center">Ready to Transform Your Business?</h3>
-                    <p class="text-sm text-gray-600 mb-6 text-center">Speak with a certified consultant to see how Business Central can optimize your operations.</p>
+                <div class="p-4 sm:p-6 md:p-8 bg-gray-50 rounded-2xl shadow-inner order-1 lg:order-2 border border-gray-200"> <!-- Reduced padding for narrow screens -->
+                    <h3 class="text-xl sm:text-2xl font-bold mb-2 text-gray-900 text-center">Ready to Transform Your Business?</h3> <!-- Slightly smaller headline -->
+                    <p class="text-xs sm:text-sm text-gray-600 mb-6 text-center">Speak with a certified consultant to see how Business Central can optimize your operations.</p>
                     
                     <!-- Phone CTA -->
                     <div class="text-center mb-6 p-3 bg-white rounded-xl border border-gray-300 shadow-sm">
-                        <p class="text-lg font-semibold text-gray-700 mb-1">Call Now for Immediate Service:</p>
-                        <a href="tel:9419149144" class="text-3xl font-extrabold text-brand-primary hover:text-brand-primary-dark transition flex items-center justify-center">
-                            <i data-lucide="phone" class="w-7 h-7 mr-3"></i>
+                        <p class="text-base sm:text-lg font-semibold text-gray-700 mb-1">Call Now for Immediate Service:</p>
+                        <a href="tel:9419149144" class="text-2xl sm:text-3xl font-extrabold text-brand-primary hover:text-brand-primary-dark transition flex items-center justify-center">
+                            <i data-lucide="phone" class="w-6 h-6 sm:w-7 sm:h-7 mr-3"></i>
                             (941) 914-9144
                         </a>
                     </div>
                     
                     <!-- Form Title -->
-                    <h4 class="text-lg font-bold text-gray-900 mb-4 text-center border-t pt-4 border-gray-200">Or Fill Out the Form (24 Hr Callback)</h4>
+                    <h4 class="text-base sm:text-lg font-bold text-gray-900 mb-4 text-center border-t pt-4 border-gray-200">Or Fill Out the Form (24 Hr Callback)</h4>
                     
                     <!-- Form (Now uses a proper form tag and required attributes) -->
-                    <form id="consultationForm" class="space-y-4">
+                    <form id="consultationForm" class="space-y-3 sm:space-y-4"> <!-- Reduced vertical spacing for inputs -->
                         <input type="text" id="fullName" placeholder="Full Name *" class="w-full p-3 rounded-lg border border-gray-300 text-gray-900 focus:ring-2 focus:ring-brand-primary focus:border-brand-primary" required>
                         <input type="email" id="workEmail" placeholder="Work Email *" class="w-full p-3 rounded-lg border border-gray-300 text-gray-900 focus:ring-2 focus:ring-brand-primary focus:border-brand-primary" required>
                         <input type="tel" id="phoneNumber" placeholder="Phone Number *" class="w-full p-3 rounded-lg border border-gray-300 text-gray-900 focus:ring-2 focus:ring-brand-primary focus:border-brand-primary" required>
@@ -168,7 +168,7 @@
                             <option value="Other Mid-Sized Business">Other Mid-Sized Business</option>
                         </select>
                         
-                        <button type="submit" id="submitButton" class="w-full p-4 font-bold text-xl rounded-xl bg-brand-primary text-white hover:bg-brand-primary-dark transition duration-200 shadow-lg flex items-center justify-center">
+                        <button type="submit" id="submitButton" class="w-full p-3 sm:p-4 font-bold text-lg sm:text-xl rounded-xl bg-brand-primary text-white hover:bg-brand-primary-dark transition duration-200 shadow-lg flex items-center justify-center">
                             <span id="buttonText">Request FREE Consultation</span>
                             <i data-lucide="zap" class="w-5 h-5 ml-2 transition-transform duration-200" id="buttonIcon"></i>
                         </button>
