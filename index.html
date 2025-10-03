@@ -16,14 +16,21 @@
             --color-brand-primary-dark: #0099D4; /* Hover/Darker Accent */
             --color-brand-soft: rgba(0, 174, 239, 0.1); /* 10% opacity for chip background */
             --color-text-dark: #1e293b; /* Dark text (Slate 800) */
-            --color-bg-light: #f8fafc; /* Global background (Slate 50) */
-            --color-bg-contrast: #f5f5f5; /* New Light Gray for section contrast */
+            
+            /* Background Colors for Structure */
+            --color-bg-white: #f8fafc; /* Softened white (Slate 50) for less glare */
+            
+            /* Dark gradient background colors for the body (depth) */
+            --color-dark-bg-start: #24292e; /* Dark slate gray for edges (similar to the reference) */
+            --color-dark-bg-end: #171c21;    /* Darker slate gray for center */
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--color-bg-light); 
             color: var(--color-text-dark); 
+            /* === APPLIED DARK GRADIENT BACKGROUND === */
+            background-color: var(--color-dark-bg-end);
+            background-image: radial-gradient(circle at center, var(--color-dark-bg-start) 10%, var(--color-dark-bg-end) 90%);
         }
         
         /* Apply custom colors using utility classes */
@@ -31,25 +38,43 @@
         .bg-brand-primary { background-color: var(--color-brand-primary); }
         .hover\:bg-brand-primary-dark:hover { background-color: var(--color-brand-primary-dark); }
         
-        /* Light theme adjustments */
-        .bg-light-contrast { background-color: #ffffff; } /* Pure white for main content box */
-        .bg-section-contrast { background-color: var(--color-bg-contrast); } /* New contrast background */
+        /* Theme adjustments */
+        .bg-light-contrast { background-color: var(--color-bg-white); } 
+        .text-light-subtle { color: #475569; }
 
+        /* Trust bar logo styling for dark background */
+        .partner-logo-filter {
+            /* FIX: Updated filter to reliably convert dark logos to white on a dark background */
+            filter: invert(1) grayscale(100%) brightness(200%); 
+        }
+
+        /* Utility classes */
         .border-brand-primary\/30 { border-color: rgba(0, 174, 239, 0.3); }
         .bg-brand-soft { background-color: var(--color-brand-soft); } 
         .focus\:ring-brand-primary:focus { --tw-ring-color: var(--color-brand-primary); }
         .focus\:border-brand-primary:focus { border-color: var(--color-brand-primary); }
-        .text-light-subtle { color: #475569; }
+
+
+        /* Custom LED Glow Effect (Increased intensity and spread) */
+        .glow-blue {
+            /* Stronger, more defined glow */
+            box-shadow: 0 0 15px rgba(0, 174, 239, 0.7), 
+                        0 0 30px rgba(0, 174, 239, 0.4), 
+                        0 0 50px rgba(0, 174, 239, 0.2); 
+        }
 
 
         /* Ensures the container takes full viewport height for Squeeze Page effect */
         #squeeze-container {
             min-height: calc(100vh - 80px);
             display: flex;
-            justify-content: center;
-            padding-top: 0; /* Removing top padding here, adding it to sections */
+            flex-direction: column; /* Stack content vertically */
+            justify-content: center; /* Center the content block vertically */
+            align-items: center; /* Keep content block centered horizontally */
+            padding-top: 0; 
             padding-bottom: 0;
         }
+        
         /* Custom spinner animation utility class */
         @keyframes spin {
             from { transform: rotate(0deg); }
@@ -58,6 +83,7 @@
         .animate-spin {
             animation: spin 1s linear infinite;
         }
+        
         /* Custom class for the single main content column */
         .main-content-column {
             max-width: 700px;
@@ -81,6 +107,12 @@
             animation-play-state: paused;
         }
         /* --- End Animation Styles --- */
+
+        /* Footer color changed to integrate with dark body background */
+        footer {
+            background-color: var(--color-dark-bg-end);
+            color: #ccc; /* Light gray text for contrast */
+        }
         
     </style>
     <!-- Icon library (lucide icons) -->
@@ -97,273 +129,295 @@
             <div class="flex justify-start items-center py-4">
                 <a href="https://www.navisiontech.com/" target="_blank" class="h-7 sm:h-8">
                     <img src="https://www.navisiontech.com/wp-content/uploads/2019/02/Logo_Transparent.png" 
-                         alt="NavisionTech Logo" 
-                         class="h-full w-auto">
+                            alt="NavisionTech Logo" 
+                            class="h-full w-auto">
                 </a>
             </div>
         </div>
     </header>
 
     <main id="squeeze-container">
-        <div class="max-w-7xl mx-auto w-full">
+        <!-- MAIN CONTENT BLOCK 1: HEADLINE, VIDEO, PRIMARY PITCH (White Background) -->
+        <!-- Added shadow-inner for softer lighting -->
+        <div class="main-content-column bg-light-contrast rounded-3xl shadow-2xl shadow-inner p-4 sm:p-8 md:p-12 mt-6 border border-brand-primary/30 mx-4 text-center glow-blue">
+            
+            <!-- Trust Banners/Chips -->
+            <div class="flex flex-wrap gap-2 mb-3 justify-center">
+                <span class="inline-block px-3 py-1 text-xs sm:text-sm font-semibold text-brand-primary bg-brand-soft rounded-full border border-brand-primary/50">
+                    LS Retail Platinum Partner
+                </span>
+                <span class="inline-block px-3 py-1 text-xs sm:text-sm font-semibold text-brand-primary bg-brand-soft rounded-full border border-brand-primary/50">
+                    Microsoft Gold Certified
+                </span>
+            </div>
 
-            <!-- MAIN CONTENT BLOCK 1: HEADLINE, VIDEO, PRIMARY PITCH (White Background) -->
-            <div class="main-content-column bg-light-contrast rounded-3xl shadow-2xl p-4 sm:p-8 md:p-12 mt-6 border border-brand-primary/30">
+            <!-- HEADLINE -->
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 leading-tight mb-6">
+                Eliminate <span class="text-brand-primary">Inventory Chaos</span> & Slow Financial Close.
+            </h1>
+
+            <!-- VIDEO EMBED -->
+            <div class="relative w-full aspect-video rounded-xl shadow-2xl overflow-hidden mb-8 max-w-lg mx-auto">
+                <iframe 
+                    class="absolute top-0 left-0 w-full h-full"
+                    src="https://www.youtube.com/embed/NofQQvlGlrI?si=LV7fyFe9vDsAUVw" 
+                    title="Customer Success Story" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-restricted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <!-- SUB-COPY -->
+            <p class="text-lg sm:text-xl text-light-subtle mb-8 max-w-2xl mx-auto">
+                Trust the Microsoft Gold Partner with <strong>20+ years of ERP experience</strong> to guide your migration to Business Central. Stop using fragmented systems and start driving <strong>235% ROI</strong> with real-time data.
+            </p>
+
+        </div>
+        <!-- END MAIN CONTENT BLOCK 1 -->
+        
+        <!-- CONTENT BLOCK 2: AUTHORITY BAR (Against Dark Gradient Background - Fixed Alignment) -->
+        <div class="main-content-column pt-8 pb-8 sm:py-10">
+            <section class="px-4">
+                <h3 class="text-center text-sm sm:text-base font-semibold text-gray-400 uppercase mb-6 tracking-wider">
+                    Official Partners & Solutions
+                </h3>
+                <div class="flex flex-wrap justify-center items-center gap-6 sm:gap-10">
+                    <!-- Partner Logos (Increased size, added rounded background for softer edge) -->
+                    <span class="bg-white/10 p-3 rounded-lg flex items-center justify-center">
+                        <img src="https://www.navisiontech.com/wp-content/uploads/2024/06/Untitled-1_0001_Layer-4-400x201.jpg" alt="LS Retail Partner Logo" class="h-10 sm:h-12 w-auto max-w-[140px] sm:max-w-[140px] opacity-90 partner-logo-filter transition duration-300 object-contain">
+                    </span>
+                    <span class="bg-white/10 p-3 rounded-lg flex items-center justify-center">
+                        <img src="https://www.navisiontech.com/wp-content/uploads/2024/06/Untitled-1_0003_Layer-7-400x201.jpg" alt="Lanham Partner Logo" class="h-10 sm:h-12 w-auto max-w-[140px] sm:max-w-[140px] opacity-90 partner-logo-filter transition duration-300 object-contain">
+                    </span>
+                    <span class="bg-white/10 p-3 rounded-lg flex items-center justify-center">
+                        <img src="https://www.navisiontech.com/wp-content/uploads/2024/06/Untitled-1_0002_Layer-3-400x201.jpg" alt="Sana Commerce Partner Logo" class="h-10 sm:h-12 w-auto max-w-[140px] sm:max-w-[140px] opacity-90 partner-logo-filter transition duration-300 object-contain">
+                    </span>
+                    <span class="bg-white/10 p-3 rounded-lg flex items-center justify-center">
+                        <img src="https://www.navisiontech.com/wp-content/uploads/2024/06/Untitled-1_0000_Layer-9-400x201.jpg" alt="Tasklet Factory Partner Logo" class="h-10 sm:h-12 w-auto max-w-[140px] sm:max-w-[140px] opacity-90 partner-logo-filter transition duration-300 object-contain">
+                    </span>
+                </div>
+            </section>
+        </div>
+        <!-- END CONTENT BLOCK 2 -->
+
+        <!-- CONTENT BLOCK 3: TESTIMONIALS (White Background, Strong Separation - Fixed Alignment) -->
+        <!-- Added shadow-inner for softer lighting -->
+        <div class="main-content-column bg-light-contrast rounded-3xl shadow-2xl shadow-inner pt-8 pb-12 sm:pt-10 sm:pb-16 mt-6 border border-brand-primary/30 mx-4 mb-6 glow-blue">
+            <section class="px-0 sm:px-4">
+                <h3 class="text-2xl font-bold mb-6 text-gray-900 text-center pt-4 border-gray-200 mx-4 sm:mx-0">Customer Success Stories</h3>
                 
-                <!-- Trust Banners/Chips -->
-                <div class="flex flex-wrap gap-2 mb-3 justify-center">
-                    <span class="inline-block px-3 py-1 text-xs sm:text-sm font-semibold text-brand-primary bg-brand-soft rounded-full border border-brand-primary/50">
-                        LS Retail Platinum Partner
-                    </span>
-                    <span class="inline-block px-3 py-1 text-xs sm:text-sm font-semibold text-brand-primary bg-brand-soft rounded-full border border-brand-primary/50">
-                        Microsoft Gold Certified
-                    </span>
-                </div>
-
-                <!-- HEADLINE -->
-                <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 leading-tight mb-6 text-center">
-                    Eliminate <span class="text-brand-primary">Inventory Chaos</span> & Slow Financial Close.
-                </h1>
-
-                <!-- VIDEO EMBED -->
-                <div class="relative w-full aspect-video rounded-xl shadow-2xl overflow-hidden mb-8 max-w-lg mx-auto">
-                    <iframe 
-                        class="absolute top-0 left-0 w-full h-full"
-                        src="https://www.youtube.com/embed/NofQQvlGlrI?si=LV7fyFe9vDsAUVw" 
-                        title="Customer Success Story" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-restricted-media; gyroscope; picture-in-picture; web-share" 
-                        referrerpolicy="strict-origin-when-cross-origin" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-
-                <!-- SUB-COPY -->
-                <p class="text-lg sm:text-xl text-light-subtle mb-8 text-center max-w-2xl mx-auto">
-                    Trust the Microsoft Gold Partner with <strong>20+ years of ERP experience</strong> to guide your migration to Business Central. Stop using fragmented systems and start driving <strong>235% ROI</strong> with real-time data.
-                </p>
-
-            </div>
-            <!-- END MAIN CONTENT BLOCK 1 -->
-
-            <!-- CONTENT BLOCK 2: AUTHORITY BAR (Light Gray Contrast Background) -->
-            <div class="main-content-column bg-section-contrast shadow-inner pt-8 pb-8 sm:py-10">
-                <section class="px-4">
-                    <h3 class="text-center text-sm sm:text-base font-semibold text-gray-500 uppercase mb-4 tracking-wider">
-                        Official Partners & Solutions
-                    </h3>
-                    <div class="flex flex-wrap justify-center items-center gap-6 sm:gap-10">
-                        <!-- Partner Logos -->
-                        <img src="https://www.navisiontech.com/wp-content/uploads/2024/06/Untitled-1_0001_Layer-4-400x201.jpg" alt="LS Retail Partner Logo" class="h-6 sm:h-8 w-auto opacity-70 hover:opacity-100 transition duration-300 object-contain">
-                        <img src="https://www.navisiontech.com/wp-content/uploads/2024/06/Untitled-1_0003_Layer-7-400x201.jpg" alt="Lanham Partner Logo" class="h-6 sm:h-8 w-auto opacity-70 hover:opacity-100 transition duration-300 object-contain">
-                        <img src="https://www.navisiontech.com/wp-content/uploads/2024/06/Untitled-1_0002_Layer-3-400x201.jpg" alt="Sana Commerce Partner Logo" class="h-6 sm:h-8 w-auto opacity-70 hover:opacity-100 transition duration-300 object-contain">
-                        <img src="https://www.navisiontech.com/wp-content/uploads/2024/06/Untitled-1_0000_Layer-9-400x201.jpg" alt="Tasklet Factory Partner Logo" class="h-6 sm:h-8 w-auto opacity-70 hover:opacity-100 transition duration-300 object-contain">
-                    </div>
-                </section>
-            </div>
-            <!-- END CONTENT BLOCK 2 -->
-
-            <!-- CONTENT BLOCK 3: TESTIMONIALS (White Background) -->
-            <div class="main-content-column bg-light-contrast pt-8 pb-12 sm:pt-10 sm:pb-16">
-                <section class="px-4">
-                    <h3 class="text-2xl font-bold mb-6 text-gray-900 text-center border-t pt-4 border-gray-200">Customer Success Stories</h3>
-                    
-                    <!-- Scrolling Container Wrapper to hide overflow -->
-                    <div class="overflow-hidden">
-                        <!-- Scrolling Loop Element -->
-                        <div class="testimonial-scroll-loop">
-                            
-                            <!-- === SET 1: ORIGINAL CARDS (for animation) === -->
-                            
-                            <!-- Card 1 (Original) -->
-                            <div class="flex-shrink-0 w-80 sm:w-96 p-6 bg-gray-50 rounded-xl shadow-sm border-l-4 border-brand-primary ml-4">
-                                <i data-lucide="quote" class="w-6 h-6 text-brand-primary mb-3"></i>
-                                <p class="text-base italic text-gray-700">
-                                    "Navisiontech helped us move from legacy systems to Business Central without disruption. We saw ROI within <strong>6 months!</strong>"
-                                </p>
-                                <p class="text-sm font-semibold text-gray-800 mt-3 block">
-                                    — Wholesale Distribution CFO, NC
-                                </p>
-                            </div>
-
-                            <!-- Card 2: Sullivan Supply (Wholesale Distribution) -->
-                            <div class="flex-shrink-0 w-80 sm:w-96 p-6 bg-gray-50 rounded-xl shadow-sm border-l-4 border-brand-primary ml-4">
-                                <i data-lucide="quote" class="w-6 h-6 text-brand-primary mb-3"></i>
-                                <p class="text-base italic text-gray-700">
-                                    "With integrated supply chain and finance in Business Central, our team can now work <strong>smarter and faster</strong>."
-                                </p>
-                                <p class="text-sm font-semibold text-gray-800 mt-3 block">
-                                    — Sullivan Supply, COO
-                                </p>
-                            </div>
-
-                            <!-- Card 3: Juliska (Retail/E-commerce/Distribution) -->
-                            <div class="flex-shrink-0 w-80 sm:w-96 p-6 bg-gray-50 rounded-xl shadow-sm border-l-4 border-brand-primary ml-4">
-                                <i data-lucide="quote" class="w-6 h-6 text-brand-primary mb-3"></i>
-                                <p class="text-base italic text-gray-700">
-                                    "Business Central makes it so much easier to run our <strong>distribution and e-commerce</strong> from a single system!"
-                                </p>
-                                <p class="text-sm font-semibold text-gray-800 mt-3 block">
-                                    — Juliska, Director of Operations
-                                </p>
-                            </div>
-
-                            <!-- Card 4: SBK International (Wholesale Distribution/International) -->
-                            <div class="flex-shrink-0 w-80 sm:w-96 p-6 bg-gray-50 rounded-xl shadow-sm border-l-4 border-brand-primary ml-4">
-                                <i data-lucide="quote" class="w-6 h-6 text-brand-primary mb-3"></i>
-                                <p class="text-base italic text-gray-700">
-                                    "We now have <strong>99% inventory accuracy</strong>, streamlining our entire purchasing and international fulfillment process."
-                                </p>
-                                <p class="text-sm font-semibold text-gray-800 mt-3 block">
-                                    — SBK International, Finance Manager
-                                </p>
-                            </div>
-
-                            <!-- === SET 2: DUPLICATE CARDS (for seamless loop) === -->
-                            
-                            <!-- Card 1 (Original) -->
-                            <div class="flex-shrink-0 w-80 sm:w-96 p-6 bg-gray-50 rounded-xl shadow-sm border-l-4 border-brand-primary ml-4">
-                                <i data-lucide="quote" class="w-6 h-6 text-brand-primary mb-3"></i>
-                                <p class="text-base italic text-gray-700">
-                                    "Navisiontech helped us move from legacy systems to Business Central without disruption. We saw ROI within <strong>6 months!</strong>"
-                                </p>
-                                <p class="text-sm font-semibold text-gray-800 mt-3 block">
-                                    — Wholesale Distribution CFO, NC
-                                </p>
-                            </div>
-
-                            <!-- Card 2: Sullivan Supply (Wholesale Distribution) -->
-                            <div class="flex-shrink-0 w-80 sm:w-96 p-6 bg-gray-50 rounded-xl shadow-sm border-l-4 border-brand-primary ml-4">
-                                <i data-lucide="quote" class="w-6 h-6 text-brand-primary mb-3"></i>
-                                <p class="text-base italic text-gray-700">
-                                    "With integrated supply chain and finance in Business Central, our team can now work <strong>smarter and faster</strong>."
-                                </p>
-                                <p class="text-sm font-semibold text-gray-800 mt-3 block">
-                                    — Sullivan Supply, COO
-                                </p>
-                            </div>
-
-                            <!-- Card 3: Juliska (Retail/E-commerce/Distribution) -->
-                            <div class="flex-shrink-0 w-80 sm:w-96 p-6 bg-gray-50 rounded-xl shadow-sm border-l-4 border-brand-primary ml-4">
-                                <i data-lucide="quote" class="w-6 h-6 text-brand-primary mb-3"></i>
-                                <p class="text-base italic text-gray-700">
-                                    "Business Central makes it so much easier to run our <strong>distribution and e-commerce</strong> from a single system!"
-                                </p>
-                                <p class="text-sm font-semibold text-gray-800 mt-3 block">
-                                    — Juliska, Director of Operations
-                                </p>
-                            </div>
-
-                            <!-- Card 4: SBK International (Wholesale Distribution/International) -->
-                            <div class="flex-shrink-0 w-80 sm:w-96 p-6 bg-gray-50 rounded-xl shadow-sm border-l-4 border-brand-primary ml-4 mr-4">
-                                <i data-lucide="quote" class="w-6 h-6 text-brand-primary mb-3"></i>
-                                <p class="text-base italic text-gray-700">
-                                    "We now have <strong>99% inventory accuracy</strong>, streamlining our entire purchasing and international fulfillment process."
-                                </p>
-                                <p class="text-sm font-semibold text-gray-800 mt-3 block">
-                                    — SBK International, Finance Manager
-                                </p>
-                            </div>
-
+                <!-- Scrolling Container Wrapper to hide overflow -->
+                <div class="overflow-hidden">
+                    <!-- Scrolling Loop Element -->
+                    <div class="testimonial-scroll-loop">
+                        
+                        <!-- === SET 1: ORIGINAL CARDS (for animation) === -->
+                        
+                        <!-- Card 1 (Original) -->
+                        <div class="flex-shrink-0 w-80 sm:w-96 p-6 bg-gray-50 rounded-xl shadow-md border-l-4 border-brand-primary ml-4">
+                            <i data-lucide="quote" class="w-6 h-6 text-brand-primary mb-3"></i>
+                            <p class="text-base italic text-gray-700">
+                                "Navisiontech helped us move from legacy systems to Business Central without disruption. We saw ROI within <strong>6 months!</strong>"
+                            </p>
+                            <p class="text-sm font-semibold text-gray-800 mt-3 block">
+                                — Wholesale Distribution CFO, NC
+                            </p>
                         </div>
-                        <!-- End Scrolling Loop Element -->
-                    </div>
-                    <!-- End Scrolling Container Wrapper -->
-                </section>
-            </div>
-            <!-- END CONTENT BLOCK 3 -->
 
-            <!-- CONTENT BLOCK 4: CONVERSION FORM & WHY TRUST (Light Gray Contrast Background) -->
-            <div class="main-content-column bg-section-contrast shadow-inner pt-12 pb-16 sm:py-16">
-                <div class="px-4 sm:px-8">
-                    
-                    <!-- CONVERSION FORM BLOCK -->
-                    <div class="p-4 sm:p-6 md:p-8 bg-light-contrast rounded-2xl shadow-xl border border-gray-200 mb-12">
-                        <h3 class="text-xl sm:text-2xl font-bold mb-2 text-gray-900 text-center">Ready to Transform Your Business?</h3>
-                        <p class="text-xs sm:text-sm text-gray-600 mb-6 text-center">Speak with a certified consultant to see how Business Central can optimize your operations.</p>
-                        
-                        <!-- Phone CTA (High-Visibility) -->
-                        <div class="text-center mb-6 p-3 bg-gray-50 rounded-xl border border-gray-300 shadow-sm">
-                            <p class="text-base sm:text-lg font-semibold text-gray-700 mb-1">Call Now for Immediate Service:</p>
-                            <a href="tel:9419149144" class="text-2xl sm:text-3xl font-extrabold text-brand-primary hover:text-brand-primary-dark transition flex items-center justify-center">
-                                <i data-lucide="phone" class="w-6 h-6 sm:w-7 sm:h-7 mr-3"></i>
-                                (941) 914-9144
-                            </a>
+                        <!-- Card 2: Sullivan Supply (Wholesale Distribution) -->
+                        <div class="flex-shrink-0 w-80 sm:w-96 p-6 bg-gray-50 rounded-xl shadow-md border-l-4 border-brand-primary ml-4">
+                            <i data-lucide="quote" class="w-6 h-6 text-brand-primary mb-3"></i>
+                            <p class="text-base italic text-gray-700">
+                                "With integrated supply chain and finance in Business Central, our team can now work <strong>smarter and faster</strong>."
+                            </p>
+                            <p class="text-sm font-semibold text-gray-800 mt-3 block">
+                                — Sullivan Supply, COO
+                            </p>
                         </div>
-                        
-                        <!-- Form Title - Updated copy for urgency -->
-                        <h4 class="text-base sm:text-lg font-bold text-gray-900 mb-4 text-center border-t pt-4 border-gray-200">Or Fill Out the Form (We Respond in 24 Hours)</h4>
-                        
-                        <!-- Form -->
-                        <form id="consultationForm" class="space-y-3 sm:space-y-4">
-                            <input type="text" id="fullName" placeholder="Full Name *" class="w-full p-3 rounded-lg border border-gray-300 text-gray-900 focus:ring-2 focus:ring-brand-primary focus:border-brand-primary" required>
-                            <input type="email" id="workEmail" placeholder="Work Email *" class="w-full p-3 rounded-lg border border-gray-300 text-gray-900 focus:ring-2 focus:ring-brand-primary focus:border-brand-primary" required>
-                            <input type="tel" id="phoneNumber" placeholder="Phone Number *" class="w-full p-3 rounded-lg border border-gray-300 text-gray-900 focus:ring-2 focus:ring-brand-primary focus:border-brand-primary" required>
-                            <select id="industryFocus" class="w-full p-3 rounded-lg border border-gray-300 text-gray-900 focus:ring-2 focus:ring-brand-primary focus:border-brand-primary" required>
-                                <option value="" disabled selected>Your Primary Industry Focus *</option>
-                                <option value="Wholesale Distribution">Wholesale Distribution</option>
-                                <option value="Retail / Hospitality (LS Central)">Retail / Hospitality (LS Central)</option>
-                                <option value="Manufacturing">Manufacturing</option>
-                                <option value="Other Mid-Sized Business">Other Mid-Sized Business</option>
-                            </select>
-                            
-                            <!-- CTA Button - Changed copy to be more action-oriented -->
-                            <button type="submit" id="submitButton" class="w-full p-3 sm:p-4 font-bold text-lg sm:text-xl rounded-xl bg-brand-primary text-white hover:bg-brand-primary-dark transition duration-200 shadow-lg flex items-center justify-center">
-                                <span id="buttonText">Book Your FREE Expert Consultation</span>
-                                <i data-lucide="zap" class="w-5 h-5 ml-2 transition-transform duration-200" id="buttonIcon"></i>
-                            </button>
-                        </form>
-                        <!-- Message Box for Success/Failure -->
-                        <div id="formMessage" class="mt-4 p-3 rounded-lg hidden" role="alert"></div>
-                        
-                        <p class="text-xs text-gray-500 mt-4 text-center">We respect your privacy. Speak directly to an expert.</p>
-                    </div>
-                    <!-- END CONVERSION FORM BLOCK -->
 
-                    <!-- Key Trust/Partner Points (Below the Form) -->
-                    <section>
-                        <h3 class="text-2xl font-bold mb-6 text-gray-900 text-center border-t pt-8 border-gray-300">Why Businesses Trust NavisionTech</h3>
-                        <ul class="space-y-8 text-gray-700">
-                            
-                            <!-- List Item 1: Specialization -->
-                            <li class="flex items-start">
+                        <!-- Card 3: Juliska (Retail/E-commerce/Distribution) -->
+                        <div class="flex-shrink-0 w-80 sm:w-96 p-6 bg-gray-50 rounded-xl shadow-md border-l-4 border-brand-primary ml-4">
+                            <i data-lucide="quote" class="w-6 h-6 text-brand-primary mb-3"></i>
+                            <p class="text-base italic text-gray-700">
+                                "Business Central makes it so much easier to run our <strong>distribution and e-commerce</strong> from a single system!"
+                            </p>
+                            <p class="text-sm font-semibold text-gray-800 mt-3 block">
+                                — Juliska, Director of Operations
+                            </p>
+                        </div>
+
+                        <!-- Card 4: SBK International (Wholesale Distribution/International) -->
+                        <div class="flex-shrink-0 w-80 sm:w-96 p-6 bg-gray-50 rounded-xl shadow-md border-l-4 border-brand-primary ml-4">
+                            <i data-lucide="quote" class="w-6 h-6 text-brand-primary mb-3"></i>
+                            <p class="text-base italic text-gray-700">
+                                "We now have <strong>99% inventory accuracy</strong>, streamlining our entire purchasing and international fulfillment process."
+                            </p>
+                            <p class="text-sm font-semibold text-gray-800 mt-3 block">
+                                — SBK International, Finance Manager
+                            </p>
+                        </div>
+
+                        <!-- === SET 2: DUPLICATE CARDS (for seamless loop) === -->
+                        
+                        <!-- Card 1 (Original) -->
+                        <div class="flex-shrink-0 w-80 sm:w-96 p-6 bg-gray-50 rounded-xl shadow-md border-l-4 border-brand-primary ml-4">
+                            <i data-lucide="quote" class="w-6 h-6 text-brand-primary mb-3"></i>
+                            <p class="text-base italic text-gray-700">
+                                "Navisiontech helped us move from legacy systems to Business Central without disruption. We saw ROI within <strong>6 months!</strong>"
+                            </p>
+                            <p class="text-sm font-semibold text-gray-800 mt-3 block">
+                                — Wholesale Distribution CFO, NC
+                            </p>
+                        </div>
+
+                        <!-- Card 2: Sullivan Supply (Wholesale Distribution) -->
+                        <div class="flex-shrink-0 w-80 sm:w-96 p-6 bg-gray-50 rounded-xl shadow-md border-l-4 border-brand-primary ml-4">
+                            <i data-lucide="quote" class="w-6 h-6 text-brand-primary mb-3"></i>
+                            <p class="text-base italic text-gray-700">
+                                "With integrated supply chain and finance in Business Central, our team can now work <strong>smarter and faster</strong>."
+                            </p>
+                            <p class="text-sm font-semibold text-gray-800 mt-3 block">
+                                — Sullivan Supply, COO
+                            </p>
+                        </div>
+
+                        <!-- Card 3: Juliska (Retail/E-commerce/Distribution) -->
+                        <div class="flex-shrink-0 w-80 sm:w-96 p-6 bg-gray-50 rounded-xl shadow-md border-l-4 border-brand-primary ml-4">
+                            <i data-lucide="quote" class="w-6 h-6 text-brand-primary mb-3"></i>
+                            <p class="text-base italic text-gray-700">
+                                "Business Central makes it so much easier to run our <strong>distribution and e-commerce</strong> from a single system!"
+                            </p>
+                            <p class="text-sm font-semibold text-gray-800 mt-3 block">
+                                — Juliska, Director of Operations
+                            </p>
+                        </div>
+
+                        <!-- Card 4: SBK International (Wholesale Distribution/International) -->
+                        <div class="flex-shrink-0 w-80 sm:w-96 p-6 bg-gray-50 rounded-xl shadow-md border-l-4 border-brand-primary ml-4 mr-4">
+                            <i data-lucide="quote" class="w-6 h-6 text-brand-primary mb-3"></i>
+                            <p class="text-base italic text-gray-700">
+                                "We now have <strong>99% inventory accuracy</strong>, streamlining our entire purchasing and international fulfillment process."
+                            </p>
+                            <p class="text-sm font-semibold text-gray-800 mt-3 block">
+                                — SBK International, Finance Manager
+                            </p>
+                        </div>
+
+                    </div>
+                    <!-- End Scrolling Loop Element -->
+                </div>
+                <!-- End Scrolling Container Wrapper -->
+            </section>
+        </div>
+        <!-- END CONTENT BLOCK 3 -->
+
+        <!-- CONTENT BLOCK 4: CONVERSION FORM (White Background Card) -->
+        <!-- Added shadow-inner for softer lighting -->
+        <div class="main-content-column bg-light-contrast rounded-3xl shadow-2xl shadow-inner p-4 sm:p-8 md:p-12 mt-6 border border-brand-primary/30 mx-4 text-center glow-blue">
+            
+            <!-- CONVERSION FORM BLOCK (Inner gray box) -->
+            <div class="p-4 sm:p-6 md:p-8 bg-gray-50 rounded-2xl shadow-xl border border-gray-200 mb-12 w-full"> <!-- Added w-full -->
+                <h3 class="text-xl sm:text-2xl font-bold mb-2 text-gray-900 text-center">Ready to Transform Your Business?</h3>
+                <p class="text-xs sm:text-sm text-gray-600 mb-6 text-center">Speak with a certified consultant to see how Business Central can optimize your operations.</p>
+                
+                <!-- Phone CTA (High-Visibility) -->
+                <div class="text-center mb-6 p-3 bg-white rounded-xl border border-gray-300 shadow-sm">
+                    <p class="text-base sm:text-lg font-semibold text-gray-700 mb-1">Call Now for Immediate Service:</p>
+                    <a href="tel:9419149144" class="text-2xl sm:text-3xl font-extrabold text-brand-primary hover:text-brand-primary-dark transition flex items-center justify-center">
+                        <i data-lucide="phone" class="w-6 h-6 sm:w-7 sm:h-7 mr-3"></i>
+                        (941) 914-9144
+                    </a>
+                </div>
+                
+                <!-- Form Title - Updated copy for urgency -->
+                <h4 class="text-base sm:text-lg font-bold text-gray-900 mb-4 text-center border-t pt-4 border-gray-200">Or Fill Out the Form (We Respond in 24 Hours)</h4>
+                
+                <!-- Form (max-w-sm mx-auto ensures the width of form elements) -->
+                <form id="consultationForm" class="space-y-3 sm:space-y-4 max-w-sm mx-auto">
+                    <input type="text" id="fullName" placeholder="Full Name *" class="w-full p-3 rounded-lg border border-gray-300 text-gray-900 focus:ring-2 focus:ring-brand-primary focus:border-brand-primary" required>
+                    <input type="email" id="workEmail" placeholder="Work Email *" class="w-full p-3 rounded-lg border border-gray-300 text-gray-900 focus:ring-2 focus:ring-brand-primary focus:border-brand-primary" required>
+                    <input type="tel" id="phoneNumber" placeholder="Phone Number *" class="w-full p-3 rounded-lg border border-gray-300 text-gray-900 focus:ring-2 focus:ring-brand-primary focus:border-brand-primary" required>
+                    <select id="industryFocus" class="w-full p-3 rounded-lg border border-gray-300 text-gray-900 focus:ring-2 focus:ring-brand-primary focus:border-brand-primary" required>
+                        <option value="" disabled selected>Your Primary Industry Focus *</option>
+                        <option value="Wholesale Distribution">Wholesale Distribution</option>
+                        <option value="Retail / Hospitality (LS Central)">Retail / Hospitality (LS Central)</option>
+                        <option value="Manufacturing">Manufacturing</option>
+                        <option value="Other Mid-Sized Business">Other Mid-Sized Business</option>
+                    </select>
+                    
+                    <!-- CTA Button - Changed copy to be more action-oriented -->
+                    <button type="submit" id="submitButton" class="w-full p-3 sm:p-4 font-bold text-lg sm:text-xl rounded-xl bg-brand-primary text-white hover:bg-brand-primary-dark transition duration-200 shadow-lg flex items-center justify-center">
+                        <span id="buttonText">Book Your FREE Expert Consultation</span>
+                        <i data-lucide="zap" class="w-5 h-5 ml-2 transition-transform duration-200" id="buttonIcon"></i>
+                    </button>
+                </form>
+                <!-- Message Box for Success/Failure -->
+                <div id="formMessage" class="mt-4 p-3 rounded-lg hidden" role="alert"></div>
+                
+                <p class="text-xs text-gray-500 mt-4 text-center">We respect your privacy. Speak directly to an expert.</p>
+            </div>
+            <!-- END CONVERSION FORM BLOCK -->
+        </div>
+        <!-- END CONTENT BLOCK 4 -->
+
+        <!-- START NEW CONTENT BLOCK 5: WHY TRUST NAVISIONTECH (Separate White Background Card) -->
+        <!-- Added shadow-inner for softer lighting -->
+        <div class="main-content-column bg-light-contrast rounded-3xl shadow-2xl shadow-inner mt-6 border border-brand-primary/30 mx-4 mb-6 text-center glow-blue">
+            
+            <!-- Inner gray box now provides the padding and visual style -->
+            <div class="p-4 sm:p-8 md:p-12 bg-gray-50 rounded-2xl shadow-xl border border-gray-200 w-full"> <!-- Added w-full -->
+                <!-- Key Trust/Partner Points -->
+                <section>
+                    <h3 class="text-2xl font-bold mb-8 text-gray-900 text-center">Why Businesses Trust NavisionTech</h3>
+                    <!-- Content now spreads to fill the inner gray box -->
+                    <ul class="space-y-8 text-gray-700">
+                        
+                        <!-- List Item 1: Specialization -->
+                        <li class="flex flex-col items-center">
+                            <div class="flex items-start justify-center"> <!-- Removed max-w-sm mx-auto -->
                                 <i data-lucide="award" class="w-6 h-6 mr-4 mt-1 text-yellow-500 shrink-0"></i>
-                                <div class="flex flex-col text-base sm:text-lg">
+                                <div class="flex flex-col text-base sm:text-lg"> 
                                     <strong class="text-gray-900 font-extrabold">Deep Specialization</strong>
                                     <span>As a Platinum Partner, we specialize in Retail and Hospitality solutions.</span>
                                 </div>
-                            </li>
+                            </div>
+                        </li>
 
-                            <!-- List Item 2: Support -->
-                            <li class="flex items-start">
+                        <!-- List Item 2: Support -->
+                        <li class="flex flex-col items-center">
+                            <div class="flex items-start justify-center"> <!-- Removed max-w-sm mx-auto -->
                                 <i data-lucide="globe" class="w-6 h-6 mr-4 mt-1 text-brand-primary shrink-0"></i>
                                 <div class="flex flex-col text-base sm:text-lg">
                                     <strong class="text-gray-900 font-extrabold">100% US-Based Support</strong>
                                     <span>Real, time-zone-friendly experts—no outsourced bots.</span>
                                 </div>
-                            </li>
+                            </div>
+                        </li>
 
-                            <!-- List Item 3: Implementation -->
-                            <li class="flex items-start">
+                        <!-- List Item 3: Implementation -->
+                        <li class="flex flex-col items-center">
+                            <div class="flex items-start justify-center"> <!-- Removed max-w-sm mx-auto -->
                                 <i data-lucide="check-circle" class="w-6 h-6 mr-4 mt-1 text-green-600 shrink-0"></i>
-                                <div class="flex flex-col text-base sm:text-lg">
+                                <div class="flex flex-col text-base sm:text-lg"> 
                                     <strong class="text-gray-900 font-extrabold">Proven Implementation</strong>
                                     <span>Our <strong>95% client retention rate</strong> speaks to our successful Go-Live methodology.</span>
                                 </div>
-                            </li>
-                        </ul>
-                    </section>
-                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
             </div>
-            <!-- END CONTENT BLOCK 4 -->
-            
         </div>
+        <!-- END NEW CONTENT BLOCK 5 -->
+        
     </main>
 
     <!-- Minimal Footer -->
-    <footer class="bg-gray-100 text-gray-700 py-4 border-t border-gray-200">
+    <footer class="text-gray-700 py-4 border-t border-gray-600">
         <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-xs text-gray-500">
+            <p class="text-xs text-gray-400">
                 &copy; 2024 NavisionTech, Inc. <a href="#" class="hover:text-brand-primary">Privacy Policy</a>
             </p>
         </div>
@@ -447,14 +501,14 @@
 
                 } else if (state === 'reset') {
                      // Reset to original state
-                     submitButton.disabled = false;
-                     submitButton.classList.remove('bg-gray-500', 'cursor-not-allowed');
-                     submitButton.classList.add('bg-brand-primary', 'hover:bg-brand-primary-dark');
-                     newButtonText.innerText = originalButtonText;
-                     submitButton.insertAdjacentHTML('beforeend', originalButtonIconHtml);
-                     formMessage.classList.add('hidden');
-                     // Re-run createIcons for the original button icon
-                     if (typeof createIcons === 'function') createIcons({ icons: { Zap } });
+                    submitButton.disabled = false;
+                    submitButton.classList.remove('bg-gray-500', 'cursor-not-allowed');
+                    submitButton.classList.add('bg-brand-primary', 'hover:bg-brand-primary-dark');
+                    newButtonText.innerText = originalButtonText;
+                    submitButton.insertAdjacentHTML('beforeend', originalButtonIconHtml);
+                    formMessage.classList.add('hidden');
+                    // Re-run createIcons for the original button icon
+                    if (typeof createIcons === 'function') createIcons({ icons: { Zap } });
                 }
             }
 
