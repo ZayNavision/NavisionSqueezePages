@@ -1,1 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NavisionTech - Book a FREE Expert Consultation</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Inter font and primary color -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        /* Define NavisionTech Brand Colors (Cyan/Azure based on Dynamics theming) */
+        :root {
+            --color-brand-primary: #00AEEF; /* Main Accent Color (Cyan) */
+            --color-brand-primary-dark: #0099D4; /* Hover/Darker Accent */
+            --color-brand-soft: rgba(0, 174, 239, 0.1); /* 10% opacity for chip background */
+            --color-text-dark: #1e293b; /* Dark text (Slate 800) */
+            --color-bg-light: #f8fafc; /* Light background (Slate 50) */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg-light); /* Light theme background */
+            color: var(--color-text-dark); /* Dark text for contrast */
+        }
+        
+        /* Apply custom colors using utility classes */
+        .text-brand-primary { color: var(--color-brand-primary); }
+        .bg-brand-primary { background-color: var(--color-brand-primary); }
+        .hover\:bg-brand-primary-dark:hover { background-color: var(--color-brand-primary-dark); }
+        
+        /* Light theme adjustments */
+        .bg-light-contrast { background-color: #ffffff; } /* Pure white for main content box */
+        .border-brand-primary\/30 { border-color: rgba(0, 174, 239, 0.3); }
+        .bg-brand-soft { background-color: var(--color-brand-soft); } 
+        .focus\:ring-brand-primary:focus { --tw-ring-color: var(--color-brand-primary); }
+        .focus\:border-brand-primary:focus { border-color: var(--color-brand-primary); }
+        .text-light-subtle { color: #475569; } /* Slate 600 for subtle text */
+
+
+        /* Ensures the container takes full viewport height for Squeeze Page effect */
+        #squeeze-container {
+            min-height: calc(100vh - 80px); /* Adjust for header height */
+            display: flex;
+            align-items: center;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+        /* Custom spinner animation utility class */
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin {
+            animation: spin 1s linear infinite;
+        }
+    </style>
+    <!-- Icon library (lucide icons) -->
+    <script type="module">
+        import { createIcons, Zap, Award, CheckCircle, Phone, Globe, DollarSign, XCircle } from 'https://unpkg.com/lucide@latest/dist/esm/lucide.js';
+        createIcons({ icons: { Zap, Award, CheckCircle, Phone, Globe, DollarSign, XCircle } });
+    </script>
+</head>
+<body>
+
+    <!-- Header / Minimal Navigation Bar for Squeeze Page Focus -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-start items-center py-4">
+                <!-- Logo Image Replacement -->
+                <div class="h-8">
+                    <img src="https://www.navisiontech.com/wp-content/uploads/2024/03/NavisionTech_logo_invert-1-1.svg" 
+                         alt="NavisionTech Logo" 
+                         class="h-full w-auto">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="squeeze-container">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <!-- Hero and Conversion Block (Combined) -->
+            <div class="grid lg:grid-cols-2 gap-12 items-start bg-light-contrast rounded-3xl shadow-2xl p-6 md:p-12 border border-brand-primary/30">
+                
+                <!-- Left Column: High-Value Proposition & Trust -->
+                <div class="lg:order-1 order-2">
+                    
+                    <span class="inline-block px-3 py-1 text-sm font-semibold text-brand-primary bg-brand-soft rounded-full mb-3">
+                        LS Retail Platinum Partner | Microsoft Gold Certified
+                    </span>
+
+                    <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 leading-tight mb-6">
+                        Boost Productivity, Improve Financial <span class="text-brand-primary">Visibility.</span>
+                    </h1>
+
+                    <!-- VIDEO EMBED: MOVED UNDER H1 -->
+                    <div class="relative w-full aspect-video rounded-xl shadow-2xl overflow-hidden mb-8">
+                        <!-- Embedded YouTube Iframe (Responsive) -->
+                        <iframe 
+                            class="absolute top-0 left-0 w-full h-full"
+                            src="https://www.youtube.com/embed/NofQQvlGlrI?si=LV7fyFe9vDXsAUVw" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-restricted-media; gyroscope; picture-in-picture; web-share" 
+                            referrerpolicy="strict-origin-when-cross-origin" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <p class="text-xl text-light-subtle mb-8">
+                        Get a **FREE Consultation** with a Business Central expert today. We are the trusted implementation partner for small to mid-sized businesses ready to transform operations.
+                    </p>
+
+                    <!-- Key Trust/Partner Points -->
+                    <ul class="space-y-4 text-lg text-gray-700">
+                        <li class="flex items-start">
+                            <i data-lucide="award" class="w-6 h-6 mr-3 mt-1 text-yellow-500 shrink-0"></i>
+                            <strong class="text-gray-900">LS Retail Platinum Partner:</strong> Unmatched expertise for Retail and Hospitality businesses.
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="globe" class="w-6 h-6 mr-3 mt-1 text-brand-primary shrink-0"></i>
+                            <strong class="text-gray-900">100% US-Based Support:</strong> Real experts, no outsourcing, no bots. Get help when you need it.
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="check-circle" class="w-6 h-6 mr-3 mt-1 text-green-600 shrink-0"></i>
+                            <strong class="text-gray-900">Proven Results:</strong> 20+ Years of ERP experience and a **95% Client Retention Rate**.
+                        </li>
+                    </ul>
+
+                    <!-- Testimonial (Styling adjusted for new position) -->
+                    <p class="text-base italic text-gray-600 mt-8 pt-6 border-t border-gray-200">
+                        "Navisiontech helped us move from legacy systems to Business Central without disruption. We saw ROI within 6 months!"
+                        <span class="text-sm font-semibold text-brand-primary block mt-1">— Wholesale Distribution CFO, NC</span>
+                    </p>
+
+                </div>
+
+                <!-- Right Column: Conversion Form (The Squeeze) -->
+                <div class="p-6 md:p-8 bg-gray-50 rounded-2xl shadow-inner lg:order-2 order-1 border border-gray-200">
+                    <h3 class="text-2xl font-bold mb-2 text-gray-900 text-center">Ready to Transform Your Business?</h3>
+                    <p class="text-sm text-gray-600 mb-6 text-center">Speak with a certified consultant to see how Business Central can optimize your operations.</p>
+                    
+                    <!-- Phone CTA -->
+                    <div class="text-center mb-6 p-3 bg-white rounded-xl border border-gray-300 shadow-sm">
+                        <p class="text-lg font-semibold text-gray-700 mb-1">Call Now for Immediate Service:</p>
+                        <a href="tel:9419149144" class="text-3xl font-extrabold text-brand-primary hover:text-brand-primary-dark transition flex items-center justify-center">
+                            <i data-lucide="phone" class="w-7 h-7 mr-3"></i>
+                            (941) 914-9144
+                        </a>
+                    </div>
+                    
+                    <!-- Form Title -->
+                    <h4 class="text-lg font-bold text-gray-900 mb-4 text-center border-t pt-4 border-gray-200">Or Fill Out the Form (24 Hr Callback)</h4>
+                    
+                    <!-- Form (Now uses a proper form tag and required attributes) -->
+                    <form id="consultationForm" class="space-y-4">
+                        <input type="text" id="fullName" placeholder="Full Name *" class="w-full p-3 rounded-lg border border-gray-300 text-gray-900 focus:ring-2 focus:ring-brand-primary focus:border-brand-primary" required>
+                        <input type="email" id="workEmail" placeholder="Work Email *" class="w-full p-3 rounded-lg border border-gray-300 text-gray-900 focus:ring-2 focus:ring-brand-primary focus:border-brand-primary" required>
+                        <input type="tel" id="phoneNumber" placeholder="Phone Number *" class="w-full p-3 rounded-lg border border-gray-300 text-gray-900 focus:ring-2 focus:ring-brand-primary focus:border-brand-primary" required>
+                        <select id="industryFocus" class="w-full p-3 rounded-lg border border-gray-300 text-gray-900 focus:ring-2 focus:ring-brand-primary focus:border-brand-primary" required>
+                            <option value="" disabled selected>Your Primary Industry Focus *</option>
+                            <option value="Wholesale Distribution">Wholesale Distribution</option>
+                            <option value="Retail / Hospitality (LS Central)">Retail / Hospitality (LS Central)</option>
+                            <option value="Manufacturing">Manufacturing</option>
+                            <option value="Other Mid-Sized Business">Other Mid-Sized Business</option>
+                        </select>
+                        
+                        <button type="submit" id="submitButton" class="w-full p-4 font-bold text-xl rounded-xl bg-brand-primary text-white hover:bg-brand-primary-dark transition duration-200 shadow-lg flex items-center justify-center">
+                            <span id="buttonText">Request FREE Consultation</span>
+                            <i data-lucide="zap" class="w-5 h-5 ml-2 transition-transform duration-200" id="buttonIcon"></i>
+                        </button>
+                    </form>
+                    <!-- Message Box for Success/Failure -->
+                    <div id="formMessage" class="mt-4 p-3 rounded-lg hidden" role="alert"></div>
+                    
+                    <p class="text-xs text-gray-500 mt-4 text-center">We respect your privacy. Speak directly to an expert.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Minimal Footer -->
+    <footer class="bg-gray-100 text-gray-700 py-4 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-xs text-gray-500">
+                &copy; 2024 NavisionTech, Inc. <a href="#" class="hover:text-brand-primary">Privacy Policy</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Simple JS for smooth scrolling, form validation, and webhook submission -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Smooth scrolling logic (unchanged)
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // --- Form Submission and Webhook Logic ---
+            const WEBHOOK_URL = 'https://navisiontech.app.n8n.cloud/webhook-test/230e05ec-41e4-4581-9d95-87d6422258fc';
+            const MAX_RETRIES = 3;
+
+            const form = document.getElementById('consultationForm');
+            const submitButton = document.getElementById('submitButton');
+            const buttonText = document.getElementById('buttonText');
+            const formMessage = document.getElementById('formMessage');
+
+            const originalButtonText = buttonText.innerText;
+            const originalButtonIconHtml = `<i data-lucide="zap" class="w-5 h-5 ml-2 transition-transform duration-200" id="buttonIcon"></i>`;
+
+            // Spinner HTML
+            const spinnerHTML = `
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+            `;
+
+            function setButtonState(state, message = '') {
+                // Remove existing icon/spinner
+                submitButton.innerHTML = `<span id="buttonText" class="whitespace-nowrap"></span>`;
+                const newButtonText = submitButton.querySelector('#buttonText');
+
+                if (state === 'sending') {
+                    submitButton.disabled = true;
+                    submitButton.classList.remove('bg-brand-primary', 'hover:bg-brand-primary-dark');
+                    submitButton.classList.add('bg-gray-500', 'cursor-not-allowed');
+                    newButtonText.innerText = 'Sending Request...';
+                    submitButton.insertAdjacentHTML('afterbegin', spinnerHTML);
+                    formMessage.classList.add('hidden');
+
+                } else if (state === 'success') {
+                    submitButton.disabled = false;
+                    submitButton.classList.remove('bg-gray-500', 'cursor-not-allowed');
+                    submitButton.classList.add('bg-brand-primary', 'hover:bg-brand-primary-dark');
+                    newButtonText.innerText = 'Request Sent!';
+                    submitButton.insertAdjacentHTML('beforeend', `<i data-lucide="check-circle" class="w-5 h-5 ml-2 transition-transform duration-200"></i>`);
+                    
+                    formMessage.className = 'mt-4 p-3 rounded-lg text-sm bg-green-100 text-green-800';
+                    formMessage.innerHTML = `<div class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 mr-2"></i><span>${message}</span></div>`;
+                    formMessage.classList.remove('hidden');
+                    // Re-run createIcons for the success icon
+                    if (typeof createIcons === 'function') createIcons({ icons: { CheckCircle } });
+
+
+                } else if (state === 'error') {
+                    submitButton.disabled = false;
+                    submitButton.classList.remove('bg-gray-500', 'cursor-not-allowed');
+                    submitButton.classList.add('bg-brand-primary', 'hover:bg-brand-primary-dark');
+                    newButtonText.innerText = originalButtonText;
+                    submitButton.insertAdjacentHTML('beforeend', originalButtonIconHtml);
+                    
+                    formMessage.className = 'mt-4 p-3 rounded-lg text-sm bg-red-100 text-red-800';
+                    formMessage.innerHTML = `<div class="flex items-center"><i data-lucide="x-circle" class="w-5 h-5 mr-2"></i><span>${message}</span></div>`;
+                    formMessage.classList.remove('hidden');
+                    // Re-run createIcons for the error icon and the original button icon
+                    if (typeof createIcons === 'function') createIcons({ icons: { Zap, XCircle } });
+
+                } else if (state === 'reset') {
+                     // Reset to original state
+                     submitButton.disabled = false;
+                     submitButton.classList.remove('bg-gray-500', 'cursor-not-allowed');
+                     submitButton.classList.add('bg-brand-primary', 'hover:bg-brand-primary-dark');
+                     newButtonText.innerText = originalButtonText;
+                     submitButton.insertAdjacentHTML('beforeend', originalButtonIconHtml);
+                     formMessage.classList.add('hidden');
+                     // Re-run createIcons for the original button icon
+                     if (typeof createIcons === 'function') createIcons({ icons: { Zap } });
+                }
+            }
+
+
+            async function sendDataWithRetry(data, attempt = 1) {
+                const delay = Math.pow(2, attempt) * 1000; // Exponential backoff: 2s, 4s, 8s
+                
+                // --- DEBUGGING ADDITION ---
+                console.log(`[DEBUG] Attempt ${attempt}: Sending JSON data to Webhook URL: ${WEBHOOK_URL}`);
+                // --------------------------
+
+                try {
+                    const response = await fetch(WEBHOOK_URL, {
+                        method: 'POST', // Explicitly set the POST method
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data),
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    
+                    return response; // Success
+
+                } catch (error) {
+                    console.error('Webhook attempt failed:', attempt, error);
+                    if (attempt < MAX_RETRIES) {
+                        // Wait for the delay time before retrying
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                        return sendDataWithRetry(data, attempt + 1);
+                    } else {
+                        throw new Error('All webhook attempts failed.');
+                    }
+                }
+            }
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // 1. Gather form data
+                const formData = {
+                    fullName: document.getElementById('fullName').value,
+                    workEmail: document.getElementById('workEmail').value,
+                    phoneNumber: document.getElementById('phoneNumber').value,
+                    industryFocus: document.getElementById('industryFocus').value,
+                    timestamp: new Date().toISOString(),
+                    pageSource: document.title,
+                };
+
+                // 2. Set sending state
+                setButtonState('sending');
+
+                try {
+                    // 3. Send data with retry logic
+                    await sendDataWithRetry(formData);
+                    
+                    // 4. Handle success
+                    setButtonState('success', 'Thank you! A consultant will contact you within 24 hours.');
+                    form.reset();
+
+                } catch (error) {
+                    // 5. Handle failure
+                    setButtonState('error', 'Submission failed. Please try calling the number above.');
+                    console.error("Final form submission failed after retries:", error);
+
+                } finally {
+                    // 6. Reset message state after success/error
+                    if (submitButton.disabled === false) { // Only reset if button is not stuck in a temporary state
+                        setTimeout(() => setButtonState('reset'), 5000); 
+                    }
+                }
+            });
+            // --- End Form Logic ---
+
+            // Initial button state setup
+            setButtonState('reset');
+        });
+    </script>
+
+</body>
+</html>
 
