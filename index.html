@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-width, initial-scale=1.0">
     <title>NavisionTech - Book a FREE Expert Consultation</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -21,8 +21,8 @@
             --color-bg-white: #f8fafc; /* Softened white (Slate 50) for less glare */
             
             /* Dark gradient background colors for the body (depth) */
-            --color-dark-bg-start: #24292e; /* Dark slate gray for edges (similar to the reference) */
-            --color-dark-bg-end: #171c21;    /* Darker slate gray for center */
+            --color-dark-bg-start: #2b3035; /* LIGHTENED: Slightly brighter charcoal for softer contrast */
+            --color-dark-bg-end: #1f2429;    /* LIGHTENED: Slightly brighter charcoal for smoother contrast */
         }
 
         body {
@@ -49,19 +49,14 @@
         }
 
         /* Utility classes */
-        .border-brand-primary\/30 { border-color: rgba(0, 174, 239, 0.3); }
+        /* Softened border to accommodate the default look */
+        .border-brand-primary\/30 { border-color: rgba(0, 174, 239, 0.1); border-width: 1px; }
         .bg-brand-soft { background-color: var(--color-brand-soft); } 
         .focus\:ring-brand-primary:focus { --tw-ring-color: var(--color-brand-primary); }
         .focus\:border-brand-primary:focus { border-color: var(--color-brand-primary); }
 
-
-        /* Custom LED Glow Effect (Increased intensity and spread) */
-        .glow-blue {
-            /* Stronger, more defined glow */
-            box-shadow: 0 0 15px rgba(0, 174, 239, 0.7), 
-                        0 0 30px rgba(0, 174, 239, 0.4), 
-                        0 0 50px rgba(0, 174, 239, 0.2); 
-        }
+        /* --- REMOVED GLOW CSS --- */
+        /* .gradient-glow class definition removed */
 
 
         /* Ensures the container takes full viewport height for Squeeze Page effect */
@@ -138,8 +133,8 @@
 
     <main id="squeeze-container">
         <!-- MAIN CONTENT BLOCK 1: HEADLINE, VIDEO, PRIMARY PITCH (White Background) -->
-        <!-- Added shadow-inner for softer lighting -->
-        <div class="main-content-column bg-light-contrast rounded-3xl shadow-2xl shadow-inner p-4 sm:p-8 md:p-12 mt-6 border border-brand-primary/30 mx-4 text-center glow-blue">
+        <!-- Using shadow-2xl (depth) and shadow-inner (soft lighting) -->
+        <div class="main-content-column bg-light-contrast rounded-3xl shadow-2xl shadow-inner p-4 sm:p-8 md:p-12 mt-6 border border-brand-primary/30 mx-4 text-center">
             
             <!-- Trust Banners/Chips -->
             <div class="flex flex-wrap gap-2 mb-3 justify-center">
@@ -203,8 +198,8 @@
         <!-- END CONTENT BLOCK 2 -->
 
         <!-- CONTENT BLOCK 3: TESTIMONIALS (White Background, Strong Separation - Fixed Alignment) -->
-        <!-- Added shadow-inner for softer lighting -->
-        <div class="main-content-column bg-light-contrast rounded-3xl shadow-2xl shadow-inner pt-8 pb-12 sm:pt-10 sm:pb-16 mt-6 border border-brand-primary/30 mx-4 mb-6 glow-blue">
+        <!-- Using shadow-2xl (depth) and shadow-inner (soft lighting) -->
+        <div class="main-content-column bg-light-contrast rounded-3xl shadow-2xl shadow-inner pt-8 pb-12 sm:pt-10 sm:pb-16 mt-6 border border-brand-primary/30 mx-4 mb-6">
             <section class="px-0 sm:px-4">
                 <h3 class="text-2xl font-bold mb-6 text-gray-900 text-center pt-4 border-gray-200 mx-4 sm:mx-0">Customer Success Stories</h3>
                 
@@ -251,7 +246,7 @@
                         <!-- Card 4: SBK International (Wholesale Distribution/International) -->
                         <div class="flex-shrink-0 w-80 sm:w-96 p-6 bg-gray-50 rounded-xl shadow-md border-l-4 border-brand-primary ml-4">
                             <i data-lucide="quote" class="w-6 h-6 text-brand-primary mb-3"></i>
-                            <p class="text-base italic text-gray-700">
+                            <p class="text-sm font-semibold text-gray-800 mt-3 block">
                                 "We now have <strong>99% inventory accuracy</strong>, streamlining our entire purchasing and international fulfillment process."
                             </p>
                             <p class="text-sm font-semibold text-gray-800 mt-3 block">
@@ -297,11 +292,8 @@
                         <!-- Card 4: SBK International (Wholesale Distribution/International) -->
                         <div class="flex-shrink-0 w-80 sm:w-96 p-6 bg-gray-50 rounded-xl shadow-md border-l-4 border-brand-primary ml-4 mr-4">
                             <i data-lucide="quote" class="w-6 h-6 text-brand-primary mb-3"></i>
-                            <p class="text-base italic text-gray-700">
-                                "We now have <strong>99% inventory accuracy</strong>, streamlining our entire purchasing and international fulfillment process."
-                            </p>
                             <p class="text-sm font-semibold text-gray-800 mt-3 block">
-                                — SBK International, Finance Manager
+                                "We now have <strong>99% inventory accuracy</strong>, streamlining our entire purchasing and international fulfillment process."
                             </p>
                         </div>
 
@@ -314,8 +306,8 @@
         <!-- END CONTENT BLOCK 3 -->
 
         <!-- CONTENT BLOCK 4: CONVERSION FORM (White Background Card) -->
-        <!-- Added shadow-inner for softer lighting -->
-        <div class="main-content-column bg-light-contrast rounded-3xl shadow-2xl shadow-inner p-4 sm:p-8 md:p-12 mt-6 border border-brand-primary/30 mx-4 text-center glow-blue">
+        <!-- Using shadow-2xl (depth) and shadow-inner (soft lighting) -->
+        <div class="main-content-column bg-light-contrast rounded-3xl shadow-2xl shadow-inner p-4 sm:p-8 md:p-12 mt-6 border border-brand-primary/30 mx-4 text-center">
             
             <!-- CONVERSION FORM BLOCK (Inner gray box) -->
             <div class="p-4 sm:p-6 md:p-8 bg-gray-50 rounded-2xl shadow-xl border border-gray-200 mb-12 w-full"> <!-- Added w-full -->
@@ -356,15 +348,18 @@
                 <!-- Message Box for Success/Failure -->
                 <div id="formMessage" class="mt-4 p-3 rounded-lg hidden" role="alert"></div>
                 
-                <p class="text-xs text-gray-500 mt-4 text-center">We respect your privacy. Speak directly to an expert.</p>
+                <!-- UPDATED PRIVACY FOOTER TEXT -->
+                <p class="text-xs text-gray-500 mt-4 text-center">
+                    By submitting, you agree to our <a href="https://www.navisiontech.com/privacy-policy/" target="_blank" class="font-semibold text-brand-primary hover:underline">Privacy Policy</a>. We respect your privacy.
+                </p>
             </div>
             <!-- END CONVERSION FORM BLOCK -->
         </div>
         <!-- END CONTENT BLOCK 4 -->
 
         <!-- START NEW CONTENT BLOCK 5: WHY TRUST NAVISIONTECH (Separate White Background Card) -->
-        <!-- Added shadow-inner for softer lighting -->
-        <div class="main-content-column bg-light-contrast rounded-3xl shadow-2xl shadow-inner mt-6 border border-brand-primary/30 mx-4 mb-6 text-center glow-blue">
+        <!-- Using shadow-2xl (depth) and shadow-inner (soft lighting) -->
+        <div class="main-content-column bg-light-contrast rounded-3xl shadow-2xl shadow-inner mt-6 border border-brand-primary/30 mx-4 mb-6 text-center">
             
             <!-- Inner gray box now provides the padding and visual style -->
             <div class="p-4 sm:p-8 md:p-12 bg-gray-50 rounded-2xl shadow-xl border border-gray-200 w-full"> <!-- Added w-full -->
@@ -418,7 +413,7 @@
     <footer class="text-gray-700 py-4 border-t border-gray-600">
         <div class="max-w-7xl mx-auto px-4 text-center">
             <p class="text-xs text-gray-400">
-                &copy; 2024 NavisionTech, Inc. <a href="#" class="hover:text-brand-primary">Privacy Policy</a>
+                &copy; 2024 NavisionTech, Inc. <a href="https://www.navisiontech.com/privacy-policy/" target="_blank" class="hover:text-brand-primary">Privacy Policy</a>
             </p>
         </div>
     </footer>
